@@ -11,7 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
-
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.Arrays;
 
 public class Controller {
@@ -20,17 +20,20 @@ public class Controller {
 
     public void setData(){
         Integer[][] arr= new Integer[5][5];
-        int k=1;
+
         for(int i=0;i<5;i++){
             for(int j=0;j<5;j++){
-                arr[i][j]=k++;
+                arr[i][j]=ThreadLocalRandom.current().nextInt(-50, 50 + 1);
             }
         }
         ObservableList<Integer[]> observableList = FXCollections.observableArrayList();
         observableList.addAll(Arrays.asList(arr));
+
+        table1.getColumns().clear();
         for (int i = 0; i < arr[0].length; i++) {
-            TableColumn tableColumn = new TableColumn("C"+String.valueOf(arr[0][i]));
             int columnNumber = i;
+            TableColumn tableColumn = new TableColumn("C"+String.valueOf(columnNumber+1));
+
 
             tableColumn.setCellValueFactory(
                     new Callback<TableColumn.CellDataFeatures<Integer[], Integer>,
