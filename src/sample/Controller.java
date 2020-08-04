@@ -17,15 +17,36 @@ import java.util.Arrays;
 public class Controller {
     @FXML
     private TableView table1;
+    @FXML
+    private Label labelMax;
+    @FXML
+    private Label labelMin;
+
+    private Integer[][] arr;
+    int max,min;
+
+
 
     public void setData(){
-        Integer[][] arr= new Integer[5][5];
-
+        arr= new Integer[5][5];
+        max=0;
+        min=0;
         for(int i=0;i<5;i++){
             for(int j=0;j<5;j++){
                 arr[i][j]=ThreadLocalRandom.current().nextInt(-50, 50 + 1);
+                if (arr[i][j]>max)
+                    max=arr[i][j];
+                if (arr[i][j]<min)
+                    min=arr[i][j];
             }
         }
+        show();
+    }
+
+    public void show(){
+        labelMax.setText(String.valueOf(max));
+        labelMin.setText(String.valueOf(min));
+
         ObservableList<Integer[]> observableList = FXCollections.observableArrayList();
         observableList.addAll(Arrays.asList(arr));
 
@@ -33,7 +54,7 @@ public class Controller {
         for (int i = 0; i < arr[0].length; i++) {
             int columnNumber = i;
             TableColumn tableColumn = new TableColumn("C"+String.valueOf(columnNumber+1));
-
+            tableColumn.setPrefWidth(130);
 
             tableColumn.setCellValueFactory(
                     new Callback<TableColumn.CellDataFeatures<Integer[], Integer>,
