@@ -25,7 +25,18 @@ public class Controller {
     private Integer[][] arr;
     int max,min;
 
-
+    public void calculate(){
+    if (Math.abs(max/min)==10){
+        for(int i=0;i<5;i++)
+            for(int j=0;j<5;j++){
+                if (arr[i][j]==0)
+                    arr[i][j]=1;
+                if (arr[i][j]<0)
+                    arr[i][j]=Math.abs(arr[i][j]);
+            }
+        show();
+    }
+    }
 
     public void setData(){
         arr= new Integer[5][5];
@@ -33,7 +44,7 @@ public class Controller {
         min=0;
         for(int i=0;i<5;i++){
             for(int j=0;j<5;j++){
-                arr[i][j]=ThreadLocalRandom.current().nextInt(-50, 50 + 1);
+                arr[i][j]=ThreadLocalRandom.current().nextInt(-10, 100 + 1);
                 if (arr[i][j]>max)
                     max=arr[i][j];
                 if (arr[i][j]<min)

@@ -11,7 +11,7 @@
         </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="210.0" mnemonicParsing="false" onAction="#setData" prefHeight="46.0" prefWidth="196.0" text="Заполнить случайными числами" />
-      <Button layoutX="225.0" layoutY="210.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="125.0" text="Выполнить задание" />
+      <Button layoutX="225.0" layoutY="210.0" mnemonicParsing="false" onAction="#calculate" prefHeight="46.0" prefWidth="125.0" text="Выполнить задание" />
       <Label layoutX="369.0" layoutY="210.0" prefHeight="24.0" prefWidth="143.0" text="Максимальный элемент:" />
       <Label layoutX="369.0" layoutY="239.0" text="Минимальный элемент:" />
       <Label fx:id="labelMax" layoutX="512.0" layoutY="214.0" prefHeight="17.0" prefWidth="48.0" />
